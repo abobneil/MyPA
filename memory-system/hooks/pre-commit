@@ -1,0 +1,18 @@
+#!/bin/sh
+
+blocked_paths=$(git diff --cached --name-only -- \
+  .llm-memory \
+  AGENTS.md \
+  CLAUDE.md \
+  GEMINI.md \
+  .github/copilot-instructions.md \
+  .cursor/rules/llm-memory.mdc)
+
+if [ -n "$blocked_paths" ]; then
+  echo "Blocked commit: private memory or generated adapter files are staged." >&2
+  echo "$blocked_paths" >&2
+  echo "Edit canonical memory, rebuild locally, and keep generated artifacts ignored." >&2
+  exit 1
+fi
+
+exit 0

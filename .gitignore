@@ -1,0 +1,8 @@
+.llm-memory/
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+.github/copilot-instructions.md
+.cursor/rules/llm-memory.mdc
+__pycache__/
+*.pyc
